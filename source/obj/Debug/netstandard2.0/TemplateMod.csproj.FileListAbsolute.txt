@@ -1,0 +1,15 @@
+/Users/samuel/Downloads/TemplateMod/bin/Debug/netstandard2.0/TemplateMod.deps.json
+/Users/samuel/Downloads/TemplateMod/bin/Debug/netstandard2.0/TemplateMod.dll
+/Users/samuel/Downloads/TemplateMod/bin/Debug/netstandard2.0/TemplateMod.pdb
+/Users/samuel/Downloads/TemplateMod/bin/Debug/netstandard2.0/Assembly-CSharp.dll
+/Users/samuel/Downloads/TemplateMod/bin/Debug/netstandard2.0/MMHOOK_Assembly-CSharp.dll
+/Users/samuel/Downloads/TemplateMod/bin/Debug/netstandard2.0/UnityEngine.UI.dll
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/TemplateMod.csproj.AssemblyReference.cache
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/PluginInfo.cs
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/TemplateMod.GeneratedMSBuildEditorConfig.editorconfig
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/TemplateMod.AssemblyInfoInputs.cache
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/TemplateMod.AssemblyInfo.cs
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/TemplateMod.csproj.CoreCompileInputs.cache
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/TemplateMod.csproj.CopyComplete
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/TemplateMod.dll
+/Users/samuel/Downloads/TemplateMod/obj/Debug/netstandard2.0/TemplateMod.pdb
