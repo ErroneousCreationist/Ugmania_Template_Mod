@@ -26,12 +26,12 @@ namespace TemplateMod
             On.Combat.Hit += Combat_Hit;
             On.SaveData.RunAfterSaveLoaded += SaveData_SaveLoaded;
 
-            //get an existing prefab, you cannot change these however
-            Logger.LogInfo("Titanium sword damage: " + ModHelper.GetPrefab("titansword_icon").GetComponent<MeleeWeapon>().EnemyDamage);
-
             //change an existing prefab (this makes titanium swords do a ton of damage)
             //note you have to access the prefab dictionary directly
             ModManager.instance.Objects.PrefabDictionary["titansword_icon"].GetComponent<MeleeWeapon>().EnemyDamage = 100;
+
+            //get an existing prefab, you cannot change these however
+            Logger.LogInfo("Titanium sword damage: " + ModHelper.GetPrefab("titansword_icon").GetComponent<MeleeWeapon>().EnemyDamage);
 
             //modify an ammo preset (this makes iron bullets do a ton of damage)
             AmmoListStruct ammo = ModHelper.GetAmmoPreset("regulargun").UsableAmmo[0];

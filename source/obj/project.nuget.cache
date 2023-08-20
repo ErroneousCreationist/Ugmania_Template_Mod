@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gKYc+3W0YCW1dOqbC5zckLIEA/+/TpyucFnqyaS5jAYvux5VvXCotOEk0o5Mas4Yn0UD/b2x7EK3jKMBdAnzwQ==",
+  "dgSpecHash": "vFfXYEvba8/b654oVHFKgT5IO70vlSl9Rx4ZS6w8Mo12h+wQEOtj49INT2X9ijRsVdhvU1fO8gvDwRmB3ZPXWQ==",
   "success": true,
-  "projectFilePath": "/Users/samuel/Downloads/TemplateMod/TemplateMod.csproj",
+  "projectFilePath": "/Users/samuel/Documents/GitHub/Ugmania_Template_Mod/source/TemplateMod.csproj",
   "expectedPackageFiles": [
     "/Users/samuel/.nuget/packages/bepinex.analyzers/1.0.8/bepinex.analyzers.1.0.8.nupkg.sha512",
     "/Users/samuel/.nuget/packages/bepinex.baselib/5.4.20/bepinex.baselib.5.4.20.nupkg.sha512",

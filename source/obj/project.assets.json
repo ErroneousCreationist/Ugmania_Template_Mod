@@ -2848,14 +2848,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/samuel/Downloads/TemplateMod/TemplateMod.csproj",
+      "projectUniqueName": "/Users/samuel/Documents/GitHub/Ugmania_Template_Mod/source/TemplateMod.csproj",
       "projectName": "TemplateMod",
-      "projectPath": "/Users/samuel/Downloads/TemplateMod/TemplateMod.csproj",
+      "projectPath": "/Users/samuel/Documents/GitHub/Ugmania_Template_Mod/source/TemplateMod.csproj",
       "packagesPath": "/Users/samuel/.nuget/packages/",
-      "outputPath": "/Users/samuel/Downloads/TemplateMod/obj/",
+      "outputPath": "/Users/samuel/Documents/GitHub/Ugmania_Template_Mod/source/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/samuel/Downloads/TemplateMod/NuGet.Config",
+        "/Users/samuel/Documents/GitHub/Ugmania_Template_Mod/source/NuGet.Config",
         "/Users/samuel/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
