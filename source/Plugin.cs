@@ -1,4 +1,5 @@
-﻿using BepInEx;
+﻿using System;
+using BepInEx;
 using UnityEngine;
 
 namespace TemplateMod
@@ -25,18 +26,37 @@ namespace TemplateMod
             On.FirstPersonMovement.Start += Movement_Start;
             On.Combat.Hit += Combat_Hit;
             On.SaveData.RunAfterSaveLoaded += SaveData_SaveLoaded;
-
-            //change an existing prefab (this makes titanium swords do a ton of damage)
-            //note you have to access the prefab dictionary directly
-            ModManager.instance.Objects.PrefabDictionary["titansword_icon"].GetComponent<MeleeWeapon>().EnemyDamage = 100;
-
-            //get an existing prefab, you cannot change these however
-            Logger.LogInfo("Titanium sword damage: " + ModHelper.GetPrefab("titansword_icon").GetComponent<MeleeWeapon>().EnemyDamage);
+            On.SaveData.RunBeforeSavedValuesInit += SaveData_AddNewData;
 
             //modify an ammo preset (this makes iron bullets do a ton of damage)
             AmmoListStruct ammo = ModHelper.GetAmmoPreset("regulargun").UsableAmmo[0];
             ammo.ammoTypeBaseDamage = 100;
             ModHelper.GetAmmoPreset("regulargun").UsableAmmo[0] = ammo;
+        }
+
+        //an example of adding new saved data to our save file
+        private void SaveData_AddNewData(On.SaveData.orig_RunBeforeSavedValuesInit orig, SaveData self)
+        {
+            //run orig
+            orig(self);
+
+            //add a new saved boolean to the list, which is saved in the save file.It can then be accessed later.
+            SaveBooleans newsavedbool = new SaveBooleans
+            {
+                myKey = "custom_saved_bool",
+                MyValue = false
+            };
+            self.savedBools = self.savedBools.AddtoArray(newsavedbool);
+
+            //adds a new saved float. These are the same as saved booleans but as a float
+            SaveFloats newsavefloat = new SaveFloats
+            {
+                myKey = "custom_saved_bool",
+                MyValue = 1.0f
+            };
+            self.savedFloats = self.savedFloats.AddtoArray(newsavefloat);
+
+            //access them using SaveData.StaticSavedBools and SaveData.StaticSavedFloats, but do it after this function!
         }
 
         private void SaveData_SaveLoaded(On.SaveData.orig_RunAfterSaveLoaded orig, SaveData self)
@@ -56,6 +76,13 @@ namespace TemplateMod
             //the scene objects
             playerHealth.instance.MaxHealth = 100;
             playerHealth.instance.currentHeath = 100;
+
+            //change an existing prefab (this makes titanium swords do a ton of damage)
+            //note you have to access the prefab dictionary directly
+            ModManager.instance.Objects.PrefabDictionary["titansword_icon"].GetComponent<MeleeWeapon>().EnemyDamage = 100;
+
+            //get an existing prefab, you cannot change these however
+            Logger.LogInfo("Titanium sword damage: " + ModHelper.GetPrefab("titansword_icon").GetComponent<MeleeWeapon>().EnemyDamage);
         }
 
         //this hook is connected to the start function in FirstPersonMovement (which moves the player)
