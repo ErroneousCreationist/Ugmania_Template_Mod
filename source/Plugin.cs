@@ -13,7 +13,7 @@ namespace TemplateMod
         //mod name (probably unused)
         public const string MOD_NAME = "Template Mod";
         //mod version (probably unused)
-        public const string MOD_VERSION = "0.0.1";
+        public const string MOD_VERSION = "0.1";
 
         public void OnEnable()
         {
@@ -25,8 +25,18 @@ namespace TemplateMod
             //using MonoMod.RuntimeDetour.HookGen here
             On.FirstPersonMovement.Start += Movement_Start;
             On.Combat.Hit += Combat_Hit;
-            On.SaveData.RunAfterSaveLoaded += SaveData_SaveLoaded;
             On.SaveData.RunBeforeSavedValuesInit += SaveData_AddNewData;
+            On.MenuButtons.Start += DoPrefabChanges;
+        }
+
+        private void DoPrefabChanges(On.MenuButtons.orig_Start orig, MenuButtons self)
+        {
+            orig(self);
+            //change an existing prefab (this makes titanium swords do a ton of damage)
+            ModHelper.GetPrefab("titansword_icon").GetComponent<MeleeWeapon>().EnemyDamage = 100;
+
+            //get an existing prefab,
+            ModHelper.Log(MOD_ID, "Titanium sword damage: " + ModHelper.GetPrefab("titansword_icon").GetComponent<MeleeWeapon>().EnemyDamage);
 
             //modify an ammo preset (this makes iron bullets do a ton of damage)
             AmmoListStruct ammo = ModHelper.GetAmmoPreset("regulargun").UsableAmmo[0];
@@ -37,7 +47,8 @@ namespace TemplateMod
         //an example of adding new saved data to our save file
         private void SaveData_AddNewData(On.SaveData.orig_RunBeforeSavedValuesInit orig, SaveData self)
         {
-            //run orig
+            //a tip: if we do not run orig, then other mods will not be able to use this hook. even if the method doesn't have anything in it
+            //(like this one), still run the orig method!
             orig(self);
 
             //add a new saved boolean to the list, which is saved in the save file.It can then be accessed later.
@@ -57,32 +68,8 @@ namespace TemplateMod
             self.savedFloats = self.savedFloats.AddtoArray(newsavefloat);
 
             //access them using SaveData.StaticSavedBools and SaveData.StaticSavedFloats, but do it after this function!
-        }
 
-        private void SaveData_SaveLoaded(On.SaveData.orig_RunAfterSaveLoaded orig, SaveData self)
-        {
-            //a tip: if we do not run orig, then other mods will not be able to use this hook. even if the method doesn't have anything in it
-            //(like this one), still run the orig method!
-            orig(self);
-
-            //ALWAYS REFERENCE SCENE OBJECTS IN A FUNCTION LIKE THIS! these scene objects do not exist in any other scene,
-            //so referencing them here is the best place if you want them modified
-            //also note: all SceneObjects are MonoBehaviours, so you can get their actual type as shown (since they all inherit from
-            //monobehaviour). You can also check if they are of a type like this: GetSceneObject("spacelander") is SpaceLander
-            //here we get the health bar ui object as a slider and set its max value to 100
-            (ModHelper.GetSceneObject("ui_ahpbar") as UnityEngine.UI.Image).color = Color.black;
-
-            //some classes have static singleton references, such as this one. as such, you can access them without going through
-            //the scene objects
-            playerHealth.instance.MaxHealth = 100;
-            playerHealth.instance.currentHeath = 100;
-
-            //change an existing prefab (this makes titanium swords do a ton of damage)
-            //note you have to access the prefab dictionary directly
-            ModManager.instance.Objects.PrefabDictionary["titansword_icon"].GetComponent<MeleeWeapon>().EnemyDamage = 100;
-
-            //get an existing prefab, you cannot change these however
-            Logger.LogInfo("Titanium sword damage: " + ModHelper.GetPrefab("titansword_icon").GetComponent<MeleeWeapon>().EnemyDamage);
+            
         }
 
         //this hook is connected to the start function in FirstPersonMovement (which moves the player)

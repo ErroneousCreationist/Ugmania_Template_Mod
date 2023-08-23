@@ -3,8 +3,8 @@
 	"ModDescription":"This is an example mod. \n You can use backslash-N to make line breaks in any string. \n DllName is the name of the .dll file that contains the mods actual plugin and code. No path or anything. Just the name of the dll file including its extension. \n ModId is the internal id of the mod, ensure it is unique.\n ModWorkshopId is the id of the mod on the steam workshop, if you haven't uploaded it yet just put random numbers. \n Version is just shown in the mod menu, not super important. \n Dependencies are other mods (denoted by ModId) that this mod requires to function. If you try to reload mods without these Dependencies enabled, you won't be able to and a message will appear.",
 	"DllName":"TemplateMod.dll",
 	"ModId":"erroneous.examplemod",
-	"ModWorkshopId":"7584953",
-	"Version":"0.0.1",
+	"ModWorkshopId":"0",
+	"Version":0.1,
 	"Dependencies":[
 		
 	]
