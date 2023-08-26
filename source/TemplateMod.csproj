@@ -35,5 +35,8 @@
     <Reference Include="UnityEngine.UnityWebRequestAudioModule">
       <HintPath>assemblyrefs\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>assemblyrefs\DOTween.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
